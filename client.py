@@ -7,6 +7,7 @@ import traceback
 import websockets
 import pickle
 import os
+from websockets.exceptions import ConnectionClosedError,InvalidURI
 
 host = input("Enter host ip: ")
 
@@ -30,19 +31,19 @@ async def hello():
         except ConnectionRefusedError:
             print("Could not find an active server! Retrying connection in 5 seconds...")
             await asyncio.sleep(5)
-        except websockets.exceptions.ConnectionClosedError:
+        except ConnectionClosedError:
             print("Server closed! Retrying connection in 5 seconds...")
         except KeyboardInterrupt:
             print("Exiting program.")
             exit()
-        except websockets.exceptions.InvalidURI:
+        except InvalidURI:
             print("Invalid URL!")
             host = input("Enter new host ip: ")
         except:
             print("Unknown error occurred! Retrying connection in 5 seconds...")
             with open("logs.txt", "w") as handle:
                 traceback.print_exc(file=handle)
-                handle.write(datetime.datetime.now())
+                handle.write(datetime.datetime.now().strftime("%m/%d/%Y, %H:%M:%S"))
             await asyncio.sleep(10) 
 
 if __name__ == "__main__":
