@@ -21,4 +21,4 @@ Prior knowledge here is assumed but the process is similar.
 `python server.py`
 
 ### Footnote
-If bluetooth_ids.json isn't present ALL manufacturers will show up as their ids, as reported from the device.
+If bluetooth_ids.json isn't present ALL manufacturers will show up as their CIC ids, as reported from the bluetooth device.

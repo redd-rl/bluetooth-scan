@@ -90,5 +90,6 @@ while True:
                 f"{Fore.WHITE}Formatted as 'Mac Address, Manufacturer, Device name (may be empty), followed by if the collected RSSI values seem abnormal or not, then show the last 20 collected RSSI values.{Style.RESET_ALL}\n" 
                 +
                 '\n'.join(total_output))
-    except ValueError: pass
+    except ValueError: 
+        pass
 
