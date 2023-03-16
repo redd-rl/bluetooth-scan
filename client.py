@@ -9,13 +9,12 @@ import pickle
 import os
 from websockets.exceptions import ConnectionClosedError,InvalidURI
 
-host = input("Enter host ip: ")
-
 async def hello():
     clear_command = {
     "nt": "cls",
     "posix": "clear"
     }
+    host = input("Enter host ip: ")
     while True:
         try:
             uri = f"ws://{host}:8765"
