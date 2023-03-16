@@ -7,7 +7,7 @@ def detect_abnormality(array: list) -> bool:
         return "Not enough data to determine"
     arrayDeviation = int(std(array))
     arrayMean = int(mean(array))
-    cut_off = arrayDeviation * 6
+    cut_off = arrayDeviation * 7
     lower_bound = arrayMean - cut_off
     upper_bound = arrayMean + cut_off
     anomalies = [i for i in array if not i in range(lower_bound, upper_bound)]

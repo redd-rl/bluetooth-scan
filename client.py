@@ -21,8 +21,7 @@ async def hello():
             async with websockets.connect(uri) as websocket:
                 while True:
                     message = hashlib.sha256(bytes(str(time.mktime(datetime.datetime.now().utctimetuple())).encode("utf-8"))).hexdigest()
-                    await websocket.send(message)
-                    
+                    await websocket.send(message)     
                     os.system(clear_command[os.name])
                     feedback = await websocket.recv()
                     data = pickle.loads(feedback)
@@ -44,9 +43,7 @@ async def hello():
             with open("logs.txt", "w") as handle:
                 traceback.print_exc(file=handle)
                 handle.write(datetime.datetime.now())
-            await asyncio.sleep(10)
-
-        
+            await asyncio.sleep(10) 
 
 if __name__ == "__main__":
     asyncio.run(hello())
