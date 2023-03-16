@@ -36,7 +36,7 @@ async def hello():
         except KeyboardInterrupt:
             print("Exiting program.")
             exit()
-        except websockets.exceptions.InvalidURI
+        except websockets.exceptions.InvalidURI:
             print("Invalid URL!")
             host = input("Enter new host ip: ")
         except:
