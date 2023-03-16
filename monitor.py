@@ -1,7 +1,5 @@
-import multiprocessing
 import subprocess
 import simplepyble
-#from pprint_color import pprint_color as pprint
 from pprint import pprint
 import os
 import json
@@ -9,12 +7,7 @@ from colorama import init as colorama_init
 from colorama import Fore
 from colorama import Style
 from algs import detect_abnormality
-import asyncio
-import websockets
-from concurrent.futures import ProcessPoolExecutor
-import threading 
 import sys
-# print(f"This is {Fore.GREEN}color{Style.RESET_ALL}!")
 os.system("color")
 if len(sys.argv) == 1:
     try:
@@ -28,9 +21,13 @@ else:
     except:
         print("Defaulting to 15 000ms as inputted value was not an int.")
         scanning_time = 15_000
-with open("bluetooth_ids.json", "r") as handle:
-    bluetooth_manufacturers: dict = json.loads(handle.read())
-    bluetooth_manufacturers: dict = bluetooth_manufacturers['_default']
+try:
+    with open("bluetooth_ids.json", "r") as handle:
+        bluetooth_manufacturers: dict = json.loads(handle.read())
+        bluetooth_manufacturers: dict = bluetooth_manufacturers['_default']
+except:
+    print("Failed to locate manufacturers file, all manufacturers will show up as unknown!")
+
 adapters = simplepyble.Adapter.get_adapters()
 trackers = {}
 subprocess.Popen(f"python server.py {scanning_time}")
