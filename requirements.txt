@@ -1,1 +1,4 @@
 websockets
+simplepyble
+colorama
+pprint
