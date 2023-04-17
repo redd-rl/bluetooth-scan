@@ -6,7 +6,7 @@ Note this is horrendously insecure and should NEVER be used in a production envi
 ## Client
 `git clone https://github.com/redd-rl/bluetooth-scan.git`
 
-`cd bluetoothscan`
+`cd bluetooth-scan`
 
 `python -m pip install -r requirements.txt`
 
@@ -15,7 +15,7 @@ Then run the corresponding file for your OS, out of `run_windows.bat`, `run-mac.
 Prior knowledge here is assumed but the process is similar.
 `git clone https://github.com/redd-rl/bluetooth-scan.git`
 
-`cd bluetoothscan`
+`cd bluetooth-scan`
 
 `python -m pip install -r requirements.txt`
 
