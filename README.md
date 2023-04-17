@@ -23,7 +23,7 @@ Prior knowledge here is assumed but the process is similar.
 ## Client
 `python client.py`
 ##  Server
-`python server.py`
+`python monitor.py`
 
 ### Footnote
 If bluetooth_ids.json isn't present ALL manufacturers will show up as their CIC ids, as reported from the bluetooth device.
