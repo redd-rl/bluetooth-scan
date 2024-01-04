@@ -1,6 +1,10 @@
 # BluetoothScan
 Scans nearby area for Bluetooth devices and displays them for clients, clients are able to connect via a WebSocket (port 8765).
 Note this is horrendously insecure and should NEVER be used in a production environment. From the vulnerabilities created by Pickle to the potential Man in the Middle attacks and non authenticated non encrypted websockets.
+Also attempts to detect duplicate devices using the same bluetooth mac addresses.
+Red represents a potential duplicate.
+Yellow represents unknown information
+Green is known safe.
 
 # Set-up
 ## Client
