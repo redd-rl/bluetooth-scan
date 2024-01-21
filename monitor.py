@@ -1,5 +1,7 @@
 import subprocess
 import traceback
+
+import requests
 import simplepyble
 from pprint import pprint
 import os
@@ -24,10 +26,10 @@ else:
         scanning_time = 15_000
 try:
     with open(file="bluetooth_ids.json", encoding="utf-8", mode="r") as handle:
-        bluetooth_manufacturers: dict = json.loads(handle.read())
+        bluetooth_manufacturers: dict = {str(index['code']): index['name'] for index in json.loads(requests.get("https://raw.githubusercontent.com/NordicSemiconductor/bluetooth-numbers-database/master/v1/company_ids.json").text)}
 except:
     traceback.print_exc()
-    print("Failed to locate manufacturers file, all manufacturers will show up as unknown!")
+    print("Failed to locate manufacturers file, check  all manufacturers will show up as unknown!")
 
 adapters = simplepyble.Adapter.get_adapters()
 trackers = {}
@@ -56,7 +58,6 @@ while True:
                 if lookup in bluetooth_manufacturers.keys():
                     manufacturer_names.append(bluetooth_manufacturers[lookup])
                 else:
-                    print("name not found")
                     manufacturer_names.append(str(lookup))
         longest_manufacturer = max(manufacturer_names,key=len)
         standardised_len_manufacturers = [f"{name}{'-' * (len(longest_manufacturer) - len(name))}" for name in manufacturer_names]
